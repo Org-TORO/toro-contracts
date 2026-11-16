@@ -26,6 +26,20 @@ Rich trace data is event-only (same as EVM): payloads are the familiar
 - **Program ID:** `2cbYretd93guxpURxqhq1UedBtwSHzT2NX6MsrBc4FWc`
 - **Upgrade authority:** deployer wallet (`~/.config/solana/id.json`) — mock only
 
+### Program keypair (not in git)
+
+`target/deploy/toro-keypair.json` is gitignored because it is a secret. On a
+fresh clone `anchor build` generates a *new random* keypair and then fails with
+`Program ID mismatch`.
+
+- **Restore the real keypair** from your secure backup to
+  `target/deploy/toro-keypair.json` (its address must be
+  `2cbYretd93guxpURxqhq1UedBtwSHzT2NX6MsrBc4FWc`).
+- **Never run `anchor keys sync` on a deployed program** — it rewrites
+  `declare_id!` to the new keypair's address and you would build/deploy to a
+  different program address.
+- For builds that do not deploy (CI, type checks) use `anchor build --ignore-keys`.
+
 ## Commands
 
 ```bash
