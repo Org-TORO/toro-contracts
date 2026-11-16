@@ -204,8 +204,9 @@ immediately (role management, implicit super-user status).
 
 ## 5. Events
 
-All events mirror the EVM contract's events. Off-chain indexers (see
-`ui/scripts/indexer-solana.ts`) reconstruct full trace histories from them.
+All events mirror the EVM contract's events. Off-chain indexers (the
+`indexer-solana.ts` script in the separate `toro-dapp` repo) reconstruct full
+trace histories from them.
 
 ### `BatchMinted`
 
@@ -299,6 +300,6 @@ There is no on-chain query interface — rich data is event-only, so history is
 reconstructed by crawling program logs:
 
 ```bash
-cd ../../ui
-npx tsx scripts/indexer-solana.ts      # crawls program events → src/data/traceIndex.json
+# in the separate toro-dapp repo
+npm run index      # crawls program events → src/data/traceIndex.json
 ```

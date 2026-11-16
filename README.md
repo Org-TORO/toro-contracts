@@ -67,9 +67,12 @@ UI silently starts decoding events with the wrong schema.
 The seed script is idempotent: it skips steps already recorded on-chain,
 paces transactions, and retries on RPC 429s. Re-run freely after failures.
 
-## Indexer (lives in ui/)
+## Indexer (lives in the `toro-dapp` repo)
 
 ```bash
-cd ../../ui
-npx tsx scripts/indexer-solana.ts   # crawls program events → src/data/traceIndex.json
+# in ../toro-dapp
+npm run index        # crawls program events → src/data/traceIndex.json
 ```
+
+That repo vendors this one's `idl/toro.json` at `src/idl/toro.json`; refresh it
+with `npm run idl:sync` after a program change.
