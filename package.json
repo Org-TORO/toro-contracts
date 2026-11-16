@@ -3,7 +3,8 @@
   "scripts": {
     "lint:fix": "prettier */*.js \"*/**/*{.js,.ts}\" -w",
     "lint": "prettier */*.js \"*/**/*{.js,.ts}\" --check",
-    "seed": "tsx scripts/seed.ts"
+    "seed": "tsx scripts/seed.ts",
+    "idl:sync": "anchor build && cp target/idl/toro.json idl/toro.json"
   },
   "dependencies": {
     "@anchor-lang/core": "^1.0.0-rc.2",
